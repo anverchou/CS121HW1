@@ -1,4 +1,5 @@
-import re
+import re #regular expressions operations package
+import sys #system-specific parameters and functions
 
 def tokenize_file(filepath):
     #Read the contents of the file
@@ -24,11 +25,24 @@ def token_frequency(tokens):
     #Return the count of the tokens
     return token_count
 
-def token_list_count(tokens):
-    return token
+def main():
+    #Check for a filename
+    if len(sys.argv) < 2:
+        print("Usage: python3 PartAHW1.py <file>")
+        sys.exit(1)
+
+    #Make text file path the first argument
+    filepath = sys.argv[1]
+
+    #Tokenize the file
+    tokens = tokenize_file(filepath)
+
+    #Get frequencies
+    frequencies = token_frequency(tokens)
+
+    #Print the frequencies in order
+    for token, freq in sorted(frequencies.items(), key=lambda x: x[1], reverse=True):
+        print(f"{token}: {freq}")
 
 if __name__ == "__main__":
-    filepath = "file.txt"
-    tokens = tokenize_file(filepath)
-    print(tokens)
-    print(token_frequency(tokens))
+    main()
