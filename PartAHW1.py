@@ -1,5 +1,6 @@
-import re #regular expressions operations package
-import sys #system-specific parameters and functions
+import re
+import sys
+d
 
 def tokenize_file(filepath):
     #Read the contents of the file
