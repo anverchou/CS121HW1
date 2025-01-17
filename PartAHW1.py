@@ -1,6 +1,5 @@
 import re
 import sys
-d
 
 def tokenize_file(filepath):
     #Read the contents of the file
