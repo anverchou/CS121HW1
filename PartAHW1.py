@@ -1,5 +1,6 @@
 import re
 import sys
+from collections import defaultdict
 
 def tokenize_file(filepath):
     #Read the contents of the file
@@ -25,6 +26,17 @@ def token_frequency(tokens):
     #Return the count of the tokens
     return token_count
 
+def print_frequencies(frequencies):
+    sorted_frequencies = sorted(frequencies.items(), key=lambda x: x[1], reverse=True)
+    for token, freq in sorted_frequencies:
+        print(f"{token}: {freq}")
+
+def common_tokens(file1, file2):
+    tokens1 = set(tokenize_file(file1))
+    tokens2 = set(tokenize_file(file2))
+    common = tokens1.intersection(tokens2)
+    return len(common)
+
 def main():
     #Check for a filename
     if len(sys.argv) < 2:
@@ -32,13 +44,20 @@ def main():
         sys.exit(1)
 
     #Make text file path the first argument
-    filepath = sys.argv[1]
+    filepath1 = sys.argv[1]
 
     #Tokenize the file
-    tokens = tokenize_file(filepath)
+    tokens = tokenize_file(filepath1)
 
     #Get frequencies
     frequencies = token_frequency(tokens)
+    print("Word Frequencies: ")
+    print_frequencies(frequencies)
+
+    if len(sys.argv) == 3:
+        filepath2 = sys.argv[2]
+        common_count = common_tokens(filepath1, filepath2)
+        print(f"\nNumber of common tokens between {filepath1} and {filepath2}: {common_count}")
 
     #Print the frequencies in order
     for token, freq in sorted(frequencies.items(), key=lambda x: x[1], reverse=True):
