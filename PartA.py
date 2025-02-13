@@ -64,7 +64,7 @@ def print_frequencies(frequencies):
 if __name__ == '__main__':
     #Error handling
     if len(sys.argv) < 2:
-        print("Format: python PartAHW1.py <file>")
+        print("Format: python PartA.py <file>")
         #Exit with a non-zero if there is an error
         sys.exit(1)
     #Get filepath

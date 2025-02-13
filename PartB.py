@@ -1,10 +1,10 @@
-import PartAHW1 as A
+import PartA as A
 import sys
 
 #Time Complexity: O(n1 + n2)
 #Construct token_count1: O(n1)
 #Construct token_count2: O(n2)
-#Find common tokens between the two dicts
+#Then find common tokens between the two dicts
 #Find intersection of the two files
 def intersection(filepath1, filepath2):
     try:
@@ -31,7 +31,7 @@ def intersection(filepath1, filepath2):
 if __name__ == '__main__':
     #Error handling
     if len(sys.argv) < 3:
-        print("Format: python PartBHW1.py <file1> <file2>")
+        print("Format: python PartB.py <file1> <file2>")
         #Exit with a non-zero if there is an error
         sys.exit(1)
     try:
